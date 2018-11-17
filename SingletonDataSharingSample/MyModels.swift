@@ -7,3 +7,35 @@
 //
 
 import Foundation
+
+class MyModel:NSObject {
+    var id:Int?
+    var title:String = ""
+    var like:Bool {
+        get {
+            guard let id = id else {
+                return false
+            }
+            return LikeCacheSingleton.shared.likes[id] ?? false
+        }
+        set(arg) {
+            guard let id = id else {
+                return
+            }
+            LikeCacheSingleton.shared.likes[id] = arg
+        }
+    }
+    
+    init(with data:[String:Any]) {
+        super.init()
+        id = data["id"] as? Int
+        title = data["title"] as! String
+        like = data["like"] as! Bool
+    }
+}
+
+class LikeCacheSingleton:NSObject {
+    static let shared = LikeCacheSingleton()
+    
+    var likes:[Int:Bool] = [:]
+}

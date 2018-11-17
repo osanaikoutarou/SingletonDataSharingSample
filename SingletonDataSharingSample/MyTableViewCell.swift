@@ -10,15 +10,25 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+
+    var didChangeLike:((_ like:Bool)->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    func setup(myModel:MyModel) {
+        titleLabel.text = myModel.title
+        likeButton.isSelected = myModel.like
+    }
+    
+    @IBAction func tappedLike(_ sender: Any) {
+        likeButton.isSelected.toggle()
+        
+        if let didChangeLike = didChangeLike {
+            didChangeLike(likeButton.isSelected)
+        }
+    }
 }

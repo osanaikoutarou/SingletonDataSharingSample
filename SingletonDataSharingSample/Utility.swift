@@ -6,4 +6,25 @@
 //  Copyright © 2018年 長内幸太郎. All rights reserved.
 //
 
-import Foundation
+// 未使用
+
+//import Foundation
+//
+//class ExecControll {
+//    var execCount:Int = 0
+//
+//    func exec(firstTime:(()->Void)?, exceptTheFirstTime:(()->Void)?) {
+//        if execCount == 0 {
+//            if let firstTime = firstTime {
+//                firstTime()
+//            }
+//        }
+//        else {
+//            if let exceptTheFirstTime = exceptTheFirstTime {
+//                exceptTheFirstTime()
+//            }
+//        }
+//        execCount += 1
+//    }
+//    
+//}
